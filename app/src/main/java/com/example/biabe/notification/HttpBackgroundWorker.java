@@ -57,7 +57,7 @@ public class HttpBackgroundWorker extends AsyncTask<String,Void,String> {
 
         {
 
-            String url="http://198.150.177.31/test.html";
+            String url="http://192.168.0.108/notif";
 
             System.out.println(url);
 
@@ -78,7 +78,7 @@ public class HttpBackgroundWorker extends AsyncTask<String,Void,String> {
             System.out.println(text);
 
             in.close();
-            if(text.equals("a"))
+            if(text.equals("1"))
                 showNotification();
 
         }

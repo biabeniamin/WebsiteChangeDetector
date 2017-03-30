@@ -49,8 +49,8 @@ public class MainActivity extends AppCompatActivity {
     {
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this);
         mBuilder.setSmallIcon(R.drawable.visa);
-        mBuilder.setContentTitle("Notification Alert, Click Me!");
-        mBuilder.setContentText("Hi, This is Android Notification Detail!");
+        mBuilder.setContentTitle("Service started");
+        mBuilder.setContentText("Service started!");
 
         NotificationManager mNotificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 
@@ -60,11 +60,13 @@ public class MainActivity extends AppCompatActivity {
     }
     void onClick(View v) {
         //read();
+        //showNotification();
         Intent intent=new Intent(this,BckChecker.class);
         startService(intent);
 
     }
     void stopService(View v) {
+        showNotification();
         Intent intent=new Intent(this,BckChecker.class);
         stopService(intent);
 
