@@ -36,11 +36,11 @@ public class HttpBackgroundWorker extends AsyncTask<String,Void,String> {
     {
         _mainContext=context;
     }
-    public  void showNotification()
+    public  void showNotification(String text)
     {
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(_mainContext);
         mBuilder.setSmallIcon(R.drawable.visa);
-        mBuilder.setContentTitle("Notification Alert, Click Me!");
+        mBuilder.setContentTitle("Notification number "+text);
         mBuilder.setContentText("Hi, This is Android Notification Detail!");
 
         NotificationManager mNotificationManager = (NotificationManager)_mainContext.getSystemService(NOTIFICATION_SERVICE);
@@ -78,8 +78,8 @@ public class HttpBackgroundWorker extends AsyncTask<String,Void,String> {
             System.out.println(text);
 
             in.close();
-            if(text.equals("1"))
-                showNotification();
+            if(!text.equals("0"))
+                showNotification(text);
 
         }
 
