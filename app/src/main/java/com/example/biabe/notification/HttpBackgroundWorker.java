@@ -4,6 +4,8 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.v7.app.NotificationCompat;
 import android.widget.Toast;
@@ -39,6 +41,8 @@ public class HttpBackgroundWorker extends AsyncTask<String,Void,String> {
     public  void showNotification(String text)
     {
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(_mainContext);
+        Uri notificationSound= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        mBuilder.setSound(notificationSound);
         mBuilder.setSmallIcon(R.drawable.visa);
         mBuilder.setContentTitle("Notification number "+text);
         mBuilder.setContentText("Hi, This is Android Notification Detail!");
