@@ -3,11 +3,13 @@ package com.example.biabe.notification;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.app.NotificationCompat;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.appindexing.Action;
@@ -30,7 +32,18 @@ public class MainActivity extends AppCompatActivity {
      * See https://g.co/AppIndexing/AndroidStudio for more information.
      */
     private GoogleApiClient client2;
-
+    void loadSharedPreferences()
+    {
+        SharedPreferences sharedpreferences=getSharedPreferences("notification",Context.MODE_WORLD_WRITEABLE);
+        EditText editNotif6=(EditText) findViewById(R.id.editNotif6);
+        EditText editNotif7=(EditText) findViewById(R.id.editNotif7);
+        EditText editNotif8=(EditText) findViewById(R.id.editNotif8);
+        EditText editNotif9=(EditText) findViewById(R.id.editNotif9);
+        editNotif6.setText(sharedpreferences.getString("6","problem"));
+        editNotif7.setText(sharedpreferences.getString("7","problem"));
+        editNotif8.setText(sharedpreferences.getString("8","problem"));
+        editNotif9.setText(sharedpreferences.getString("9","problem"));
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client2 = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
+        loadSharedPreferences();
     }
 
     void read() {
@@ -70,6 +84,21 @@ public class MainActivity extends AppCompatActivity {
         Intent intent=new Intent(this,BckChecker.class);
         stopService(intent);
 
+    }
+    void saveText(View v)
+    {
+        EditText editNotif6=(EditText) findViewById(R.id.editNotif6);
+        EditText editNotif7=(EditText) findViewById(R.id.editNotif7);
+        EditText editNotif8=(EditText) findViewById(R.id.editNotif8);
+        EditText editNotif9=(EditText) findViewById(R.id.editNotif9);
+        SharedPreferences sharedpreferences=getSharedPreferences("notification",Context.MODE_WORLD_WRITEABLE);
+        SharedPreferences.Editor editor = sharedpreferences.edit();
+        editor.putString("6",editNotif6.getText().toString());
+        editor.putString("7",editNotif7.getText().toString());
+        editor.putString("8",editNotif8.getText().toString());
+        editor.putString("9",editNotif9.getText().toString());
+        editor.commit();
+        loadSharedPreferences();
     }
 
     /**

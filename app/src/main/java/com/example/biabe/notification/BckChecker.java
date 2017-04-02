@@ -53,19 +53,6 @@ public class BckChecker extends Service {
     public void onCreate() {
         super.onCreate();
     }
-    public  void showNotification()
-    {
-        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(getBaseContext());
-        mBuilder.setSmallIcon(R.drawable.visa);
-        mBuilder.setContentTitle("Not frin background");
-        mBuilder.setContentText("it works!");
-
-        NotificationManager mNotificationManager = (NotificationManager)getBaseContext().getSystemService(NOTIFICATION_SERVICE);
-
-// notificationID allows you to update the notification later on.
-        mNotificationManager.notify(0, mBuilder.build());
-
-    }
     Thread checkThread;
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {

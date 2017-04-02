@@ -36,4 +36,50 @@
         android:layout_marginTop="10dp"
         android:id="@+id/button2"
         android:onClick="stopService"/>
+
+    <EditText
+        android:id="@+id/editNotif6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/button2"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="39dp"
+        android:ems="10" />
+    <EditText
+        android:id="@+id/editNotif7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:ems="10"
+        android:layout_below="@+id/editNotif6"
+        android:layout_alignStart="@+id/editNotif6" />
+    <EditText
+        android:id="@+id/editNotif8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:ems="10"
+        android:layout_below="@+id/editNotif7"
+        android:layout_alignStart="@+id/editNotif7" />
+    <EditText
+        android:id="@+id/editNotif9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:ems="10"
+        android:layout_below="@+id/editNotif8"
+        android:layout_alignStart="@+id/editNotif8" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/editNotif7"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="16dp"
+        android:layout_toEndOf="@+id/editNotif7"
+        android:text="Save"
+        android:onClick="saveText"/>
+
 </RelativeLayout>

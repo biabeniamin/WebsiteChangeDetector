@@ -4,10 +4,12 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.v7.app.NotificationCompat;
+import android.widget.EditText;
 import android.widget.Toast;
 
 
@@ -34,9 +36,15 @@ import static android.content.Context.NOTIFICATION_SERVICE;
 public class HttpBackgroundWorker extends AsyncTask<String,Void,String> {
 
     private Context _mainContext;
+    private SharedPreferences sharedpreferences;
     public  HttpBackgroundWorker(Context context)
     {
         _mainContext=context;
+        sharedpreferences=context.getSharedPreferences("notification",Context.MODE_WORLD_WRITEABLE);
+    }
+    String loadNotificationText(String text)
+    {
+        return sharedpreferences.getString(text,"Notification number "+text);
     }
     public  void showNotification(String text)
     {
@@ -44,7 +52,7 @@ public class HttpBackgroundWorker extends AsyncTask<String,Void,String> {
         Uri notificationSound= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         mBuilder.setSound(notificationSound);
         mBuilder.setSmallIcon(R.drawable.visa);
-        mBuilder.setContentTitle("Notification number "+text);
+        mBuilder.setContentTitle(loadNotificationText(text));
         mBuilder.setContentText("Hi, This is Android Notification Detail!");
 
         NotificationManager mNotificationManager = (NotificationManager)_mainContext.getSystemService(NOTIFICATION_SERVICE);
