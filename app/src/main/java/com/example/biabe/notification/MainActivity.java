@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private GoogleApiClient client2;
     void loadSharedPreferences()
     {
-        SharedPreferences sharedpreferences=getSharedPreferences("notification",Context.MODE_WORLD_WRITEABLE);
+        SharedPreferences sharedpreferences=getSharedPreferences("notification",Context.MODE_PRIVATE);
         EditText editNotif6=(EditText) findViewById(R.id.editNotif6);
         EditText editNotif7=(EditText) findViewById(R.id.editNotif7);
         EditText editNotif8=(EditText) findViewById(R.id.editNotif8);
@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
         EditText editNotif7=(EditText) findViewById(R.id.editNotif7);
         EditText editNotif8=(EditText) findViewById(R.id.editNotif8);
         EditText editNotif9=(EditText) findViewById(R.id.editNotif9);
-        SharedPreferences sharedpreferences=getSharedPreferences("notification",Context.MODE_WORLD_WRITEABLE);
+        SharedPreferences sharedpreferences=getSharedPreferences("notification",Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedpreferences.edit();
         editor.putString("6",editNotif6.getText().toString());
         editor.putString("7",editNotif7.getText().toString());

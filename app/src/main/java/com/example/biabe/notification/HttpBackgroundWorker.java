@@ -40,7 +40,7 @@ public class HttpBackgroundWorker extends AsyncTask<String,Void,String> {
     public  HttpBackgroundWorker(Context context)
     {
         _mainContext=context;
-        sharedpreferences=context.getSharedPreferences("notification",Context.MODE_WORLD_WRITEABLE);
+        sharedpreferences=context.getSharedPreferences("notification",Context.MODE_PRIVATE);
     }
     String loadNotificationText(String text)
     {
@@ -69,7 +69,7 @@ public class HttpBackgroundWorker extends AsyncTask<String,Void,String> {
 
         {
 
-            String url="http://192.168.0.108/notif";
+            String url="http://192.168.0.106/notif";
 
             System.out.println(url);
 
