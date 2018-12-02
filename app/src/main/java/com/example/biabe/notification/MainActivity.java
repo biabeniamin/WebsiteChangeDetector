@@ -25,6 +25,8 @@ import org.apache.http.impl.client.DefaultHttpClient;
 
 import java.io.IOException;
 
+import static android.content.Context.NOTIFICATION_SERVICE;
+
 public class MainActivity extends AppCompatActivity {
 
     /**
@@ -39,10 +41,12 @@ public class MainActivity extends AppCompatActivity {
         EditText editNotif7=(EditText) findViewById(R.id.editNotif7);
         EditText editNotif8=(EditText) findViewById(R.id.editNotif8);
         EditText editNotif9=(EditText) findViewById(R.id.editNotif9);
+        EditText editTextUrl=(EditText) findViewById(R.id.editNotif2);
         editNotif6.setText(sharedpreferences.getString("6","problem"));
         editNotif7.setText(sharedpreferences.getString("7","problem"));
         editNotif8.setText(sharedpreferences.getString("8","problem"));
         editNotif9.setText(sharedpreferences.getString("9","problem"));
+        editTextUrl.setText(sharedpreferences.getString("url", "http://192.168.0.107/getAction.php"));
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,31 +76,33 @@ public class MainActivity extends AppCompatActivity {
         mNotificationManager.notify(0, mBuilder.build());
 
     }
-    void onClick(View v) {
+    public void onClick(View v) {
         //read();
         //showNotification();
         Intent intent=new Intent(this,BckChecker.class);
         startService(intent);
 
     }
-    void stopService(View v) {
+    public void stopService(View v) {
         showNotification();
         Intent intent=new Intent(this,BckChecker.class);
         stopService(intent);
 
     }
-    void saveText(View v)
+    public  void saveText(View v)
     {
         EditText editNotif6=(EditText) findViewById(R.id.editNotif6);
         EditText editNotif7=(EditText) findViewById(R.id.editNotif7);
         EditText editNotif8=(EditText) findViewById(R.id.editNotif8);
         EditText editNotif9=(EditText) findViewById(R.id.editNotif9);
+        EditText editTextUrl=(EditText) findViewById(R.id.editNotif2);
         SharedPreferences sharedpreferences=getSharedPreferences("notification",Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedpreferences.edit();
         editor.putString("6",editNotif6.getText().toString());
         editor.putString("7",editNotif7.getText().toString());
         editor.putString("8",editNotif8.getText().toString());
         editor.putString("9",editNotif9.getText().toString());
+        editor.putString("url",editTextUrl.getText().toString());
         editor.commit();
         loadSharedPreferences();
     }

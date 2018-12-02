@@ -69,7 +69,7 @@ public class HttpBackgroundWorker extends AsyncTask<String,Void,String> {
 
         {
 
-            String url="http://192.168.0.106/notif";
+            String url=sharedpreferences.getString("url", "http://192.168.0.107/getAction.php");
 
             System.out.println(url);
 
